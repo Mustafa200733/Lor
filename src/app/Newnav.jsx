@@ -10,18 +10,15 @@ export default function Nav() {
         </Link>
 
 
-
         <Link href="/Menu" style={styles.navText}>
           MENU
         </Link>
-
-     
 
         <Link href="/Contact" style={styles.navText}>
           CONTACT
         </Link>
 
-        <Link href="/Reserve" style={styles.button}>
+        <Link href="/Reserveer" style={styles.button}>
           <Text style={styles.buttonText}>RESERVEER NU</Text>
         </Link>
       </View>
