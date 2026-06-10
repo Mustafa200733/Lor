@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
 
-export default function Nav() {
+export default function Newnav() {
   return (
     <View style={styles.container}>
       <View style={styles.navbar}>

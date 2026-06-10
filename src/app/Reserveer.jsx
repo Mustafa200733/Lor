@@ -67,7 +67,7 @@ export default function Reserveer() {
       <View style={styles.overlay}>
 
         {/* NAVBAR */}
-        <Nav />
+        <Nav/>
 
         <ScrollView contentContainerStyle={styles.content}>
 
