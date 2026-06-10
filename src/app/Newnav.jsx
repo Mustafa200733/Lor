@@ -21,7 +21,7 @@ export default function Nav() {
           CONTACT
         </Link>
 
-        <Link href="/Reserve" style={styles.button}>
+        <Link href="/Reserveer" style={styles.button}>
           <Text style={styles.buttonText}>RESERVEER NU</Text>
         </Link>
       </View>
