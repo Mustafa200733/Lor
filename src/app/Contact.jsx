@@ -30,7 +30,7 @@ export default function Contact() {
       <Image source={require('./images/mail.png')} style={styles.icon} />
       <View style={styles.info}>
         <Text style={styles.label}>E-mail</Text>
-        <Text style={styles.text}>info@luxerestaurant.nl</Text>
+        <Text style={styles.text}>info@Velor.nl</Text>
       </View>
     </View>
   </View>
