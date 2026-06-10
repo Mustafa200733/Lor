@@ -11,12 +11,15 @@ import Nav from './Newnav';
 
 export default function Menu() {
   return (
-    <ScrollView style={styles.container}>
-       <View style={styles.navbar}>
-        <Nav />
-    </View>
+    <View style={styles.container}>
+      <Nav />
 
-    <View style={styles.heroSection}>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+      >
+
+      <View style={styles.heroSection}>
         <View style={styles.heroText}>
           <Text style={styles.smallTitle}>
             ONS MENU
@@ -179,7 +182,8 @@ export default function Menu() {
           </Text>
         </View>
       </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -187,6 +191,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F4F0',
+  },
+
+  scrollView: {
+    flex: 1,
+  },
+
+  scrollContent: {
+    paddingTop: 64,
   },
 
   heroSection: {
@@ -205,7 +217,7 @@ const styles = StyleSheet.create({
     color: '#B88A44',
     fontSize: 18,
     fontWeight: '600',
-    top: -105,
+    top: -10,
     letterSpacing: 1,
   },
 
@@ -213,13 +225,13 @@ const styles = StyleSheet.create({
     fontSize: 52,
     color: '#2F2F2F',
     fontWeight: 'bold',
-    top: -100,
+    top: -10,
   },
 
   subtitle: {
     fontSize: 20,
     color: '#666',
-    top: -90,
+    top: -1,
   },
 
   heroImage: {
@@ -273,8 +285,4 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
 
-  navbar: {
-    paddingVertical: 105,
-   top: -105,
-  }
 });

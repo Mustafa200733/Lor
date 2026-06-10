@@ -30,11 +30,16 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 999,
+    elevation: 999,
   },
 
   navbar: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.9)',
     paddingHorizontal: 30,
     paddingVertical: 14,
@@ -46,8 +51,8 @@ navText: {
   fontSize: 13,
   fontWeight: '600',
   letterSpacing: 0.8,
-  marginHorizontal: 90 , 
-  left: 500,
+  marginHorizontal: 34,
+  left:100,
 },
 
   button: {
@@ -56,7 +61,7 @@ navText: {
     paddingVertical: 12,
     borderRadius: 4,
     textDecorationLine: 'none',
-    left: 600,
+    left:400,
   },
 
   buttonText: {

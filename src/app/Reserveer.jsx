@@ -13,7 +13,6 @@ import {
 import Nav from './Newnav';
 
 export default function Reserveer() {
-
   // INPUT STATES
   const [naam, setNaam] = useState('');
   const [email, setEmail] = useState('');
@@ -25,9 +24,42 @@ export default function Reserveer() {
   const [melding, setMelding] = useState('');
   const [showMelding, setShowMelding] = useState(false);
 
+  const toonMelding = (tekst) => {
+    setMelding(tekst);
+    setShowMelding(true);
+    setTimeout(() => setShowMelding(false), 3000);
+  };
+
+  const veranderNaam = (tekst) => {
+    setNaam(tekst.replace(/[^a-zA-Z\s]/g, ''));
+  };
+
+  const veranderDatum = (tekst) => {
+    setDatum(tekst.replace(/[^0-9-]/g, ''));
+  };
+
+  const veranderTijd = (tekst) => {
+    setTijd(tekst.replace(/[^0-9:]/g, ''));
+  };
+
+  const veranderPersonen = (tekst) => {
+    setPersonen(tekst.replace(/[^0-9]/g, ''));
+  };
+
   // RESERVEREN FUNCTIE
   const reserveer = () => {
     Keyboard.dismiss();
+
+  const emailIsGeldig = email.trim().toLowerCase().endsWith('@gmail.com');    const tijdWaarde = tijd.trim();
+    const tijdDelen = tijdWaarde.split(':');
+    const uur = Number(tijdDelen[0]);
+    const minuten = Number(tijdDelen[1]);
+    const tijdIsGeldig =
+     
+      uur >= 0 &&
+      uur <= 23 &&
+      minuten >= 0 &&
+      minuten <= 59;
 
     // validatie
     if (
@@ -37,16 +69,22 @@ export default function Reserveer() {
       !tijd.trim() ||
       !personen.trim()
     ) {
-      setMelding('❌ Vul alle velden in');
-      setShowMelding(true);
+      toonMelding('Vul alle velden in');
+      return;
+    }
 
-      setTimeout(() => setShowMelding(false), 3000);
+    if (!emailIsGeldig) {
+      toonMelding('Gebruik een Gmail-adres, bijvoorbeeld naam@gmail.com');
+      return;
+    }
+
+    if (!tijdIsGeldig) {
+      toonMelding('Gebruik een tijd met :, bijvoorbeeld 18:30');
       return;
     }
 
     // succes melding
-    setMelding(`✅ Reservering bevestigd voor ${naam} (${personen} personen)`);
-    setShowMelding(true);
+    toonMelding(`Reservering bevestigd voor ${naam} (${personen} personen)`);
 
     // reset velden
     setNaam('');
@@ -54,8 +92,6 @@ export default function Reserveer() {
     setDatum('');
     setTijd('');
     setPersonen('');
-
-    setTimeout(() => setShowMelding(false), 3000);
   };
 
   return (
@@ -65,12 +101,9 @@ export default function Reserveer() {
       resizeMode="cover"
     >
       <View style={styles.overlay}>
-
-        {/* NAVBAR */}
-        <Nav/>
+        <Nav />
 
         <ScrollView contentContainerStyle={styles.content}>
-
           {/* TITEL */}
           <View style={styles.hero}>
             <Text style={styles.eyebrow}>RESERVEREN</Text>
@@ -82,12 +115,11 @@ export default function Reserveer() {
 
           {/* FORMULIER */}
           <View style={styles.formPanel}>
-
             <TextInput
               style={styles.input}
               placeholder="Naam"
               value={naam}
-              onChangeText={setNaam}
+              onChangeText={veranderNaam}
             />
 
             <TextInput
@@ -96,20 +128,23 @@ export default function Reserveer() {
               value={email}
               onChangeText={setEmail}
               keyboardType="email-address"
+              autoCapitalize="none"
             />
 
             <TextInput
               style={styles.input}
               placeholder="Datum"
               value={datum}
-              onChangeText={setDatum}
+              onChangeText={veranderDatum}
+              keyboardType="numbers-and-punctuation"
             />
 
             <TextInput
               style={styles.input}
               placeholder="Tijd"
               value={tijd}
-              onChangeText={setTijd}
+              onChangeText={veranderTijd}
+              keyboardType="numbers-and-punctuation"
             />
 
             {/* AANTAL PERSONEN */}
@@ -117,7 +152,7 @@ export default function Reserveer() {
               style={styles.input}
               placeholder="Aantal personen"
               value={personen}
-              onChangeText={setPersonen}
+              onChangeText={veranderPersonen}
               keyboardType="numeric"
             />
 
@@ -134,9 +169,7 @@ export default function Reserveer() {
                 RESERVERING VERSTUREN
               </Text>
             </TouchableOpacity>
-
           </View>
-
         </ScrollView>
       </View>
     </ImageBackground>
