@@ -10,33 +10,60 @@ import {
   View,
 } from 'react-native';
 
+// Importeert de navigatiebalk die bovenaan de pagina staat.
 import Nav from './Newnav';
 
+// Dit is de reserveringspagina.
 export default function Reserveer() {
-  // INPUT STATES
+  // Bewaart wat de gebruiker invult bij naam.
   const [naam, setNaam] = useState('');
+
+  // Bewaart wat de gebruiker invult bij e-mail.
   const [email, setEmail] = useState('');
+
+  // Bewaart de gekozen datum.
   const [datum, setDatum] = useState('');
+
+  // Bewaart de gekozen tijd.
   const [tijd, setTijd] = useState('');
+
+  // Bewaart het aantal personen.
   const [personen, setPersonen] = useState('');
 
-  // MELDING STATES
+  // Bewaart de tekst van de melding onder het formulier.
   const [melding, setMelding] = useState('');
+
+  // Bepaalt of de melding zichtbaar is.
   const [showMelding, setShowMelding] = useState(false);
+
+  // Bepaalt of de datumopties zichtbaar zijn.
   const [showDatumOpties, setShowDatumOpties] = useState(false);
+
+  // Bepaalt of de tijdopties zichtbaar zijn.
   const [showTijdOpties, setShowTijdOpties] = useState(false);
 
+  // Maakt automatisch 14 datums vanaf vandaag.
   const datumOpties = Array.from({ length: 14 }, (_, index) => {
+    // Maakt een datumobject voor vandaag.
     const optie = new Date();
+
+    // Verschuift de datum met het aantal dagen van de index.
     optie.setDate(optie.getDate() + index);
 
+    // Haalt het jaar uit de datum.
     const jaar = optie.getFullYear();
+
+    // Haalt de maand uit de datum en zorgt voor 2 cijfers.
     const maand = String(optie.getMonth() + 1).padStart(2, '0');
+
+    // Haalt de dag uit de datum en zorgt voor 2 cijfers.
     const dag = String(optie.getDate()).padStart(2, '0');
 
+    // Geeft de datum terug als jaar-maand-dag.
     return `${jaar}-${maand}-${dag}`;
   });
 
+  // Dit zijn de tijden waaruit de gebruiker kan kiezen.
   const tijdOpties = [
     '17:00',
     '17:30',
@@ -49,29 +76,49 @@ export default function Reserveer() {
     '21:00',
   ];
 
+  // Laat een melding zien en verbergt die na 3 seconden.
   const toonMelding = (tekst) => {
+    // Zet de tekst van de melding.
     setMelding(tekst);
+
+    // Maakt de melding zichtbaar.
     setShowMelding(true);
+
+    // Verbergt de melding na 3 seconden.
     setTimeout(() => setShowMelding(false), 3000);
   };
 
+  // Laat bij naam alleen letters en spaties toe.
   const veranderNaam = (tekst) => {
     setNaam(tekst.replace(/[^a-zA-Z\s]/g, ''));
   };
 
+  // Laat bij aantal personen alleen cijfers toe.
   const veranderPersonen = (tekst) => {
     setPersonen(tekst.replace(/[^0-9]/g, ''));
   };
 
-  // RESERVEREN FUNCTIE
+  // Deze functie wordt uitgevoerd als de gebruiker op de knop drukt.
   const reserveer = () => {
+    // Sluit het toetsenbord.
     Keyboard.dismiss();
 
+    // Controleert of de e-mail eindigt op @gmail.com.
     const emailIsGeldig = email.trim().toLowerCase().endsWith('@gmail.com');
+
+    // Haalt overbodige spaties weg bij de gekozen tijd.
     const tijdWaarde = tijd.trim();
+
+    // Splitst de tijd in uren en minuten.
     const tijdDelen = tijdWaarde.split(':');
+
+    // Zet het uur om naar een nummer.
     const uur = Number(tijdDelen[0]);
+
+    // Zet de minuten om naar een nummer.
     const minuten = Number(tijdDelen[1]);
+
+    // Controleert of de tijd een geldig uur en geldige minuten heeft.
     const tijdIsGeldig =
       tijdDelen.length === 2 &&
       uur >= 0 &&
@@ -79,7 +126,7 @@ export default function Reserveer() {
       minuten >= 0 &&
       minuten <= 59;
 
-    // validatie
+    // Controleert of alle velden zijn ingevuld.
     if (
       !naam.trim() ||
       !email.trim() ||
@@ -87,42 +134,58 @@ export default function Reserveer() {
       !tijd.trim() ||
       !personen.trim()
     ) {
+      // Laat een foutmelding zien als er iets leeg is.
       toonMelding('Vul alle velden in');
       return;
     }
 
+    // Controleert of het e-mailadres een Gmail-adres is.
     if (!emailIsGeldig) {
       toonMelding('Gebruik een Gmail-adres, bijvoorbeeld naam@gmail.com');
       return;
     }
 
+    // Controleert of de gekozen tijd geldig is.
     if (!tijdIsGeldig) {
       toonMelding('Gebruik een tijd met :, bijvoorbeeld 18:30');
       return;
     }
 
-    // succes melding
+    // Laat een succesmelding zien als alles klopt.
     toonMelding(`Reservering bevestigd voor ${naam} (${personen} personen)`);
 
-    // reset velden
+    // Maakt het naamveld leeg.
     setNaam('');
+
+    // Maakt het e-mailveld leeg.
     setEmail('');
+
+    // Maakt de gekozen datum leeg.
     setDatum('');
+
+    // Maakt de gekozen tijd leeg.
     setTijd('');
+
+    // Maakt het aantal personen leeg.
     setPersonen('');
   };
 
+  // Bouwt de zichtbare pagina.
   return (
+    // Zet een achtergrondafbeelding achter de pagina.
     <ImageBackground
       source={require('./images/home.png')}
       style={styles.background}
       resizeMode="cover"
     >
+      {/* Donkere laag over de achtergrond voor betere leesbaarheid. */}
       <View style={styles.overlay}>
+        {/* Navigatiebalk bovenaan de pagina. */}
         <Nav />
 
+        {/* ScrollView zorgt dat het formulier kan scrollen als het scherm klein is. */}
         <ScrollView contentContainerStyle={styles.content}>
-          {/* TITEL */}
+          {/* Titelgedeelte van de pagina. */}
           <View style={styles.hero}>
             <Text style={styles.eyebrow}>RESERVEREN</Text>
             <Text style={styles.title}>Reserveer een Tafel</Text>
@@ -131,8 +194,9 @@ export default function Reserveer() {
             </Text>
           </View>
 
-          {/* FORMULIER */}
+          {/* Witte kaart waar het formulier in staat. */}
           <View style={styles.formPanel}>
+            {/* Invoerveld voor de naam. */}
             <TextInput
               style={styles.input}
               placeholder="Naam"
@@ -140,6 +204,7 @@ export default function Reserveer() {
               onChangeText={veranderNaam}
             />
 
+            {/* Invoerveld voor het Gmail-adres. */}
             <TextInput
               style={styles.input}
               placeholder="E-mail"
@@ -149,6 +214,7 @@ export default function Reserveer() {
               autoCapitalize="none"
             />
 
+            {/* Knop waarmee de datumkeuze wordt geopend. */}
             <TouchableOpacity
               style={styles.selectInput}
               onPress={() => {
@@ -156,14 +222,17 @@ export default function Reserveer() {
                 setShowTijdOpties(false);
               }}
             >
+              {/* Toont de gekozen datum of een placeholder. */}
               <Text style={datum ? styles.selectText : styles.selectPlaceholder}>
                 {datum || 'Kies datum'}
               </Text>
             </TouchableOpacity>
 
+            {/* Toont de datumopties als de datumkeuze open is. */}
             {showDatumOpties && (
               <View style={styles.optiesContainer}>
                 {datumOpties.map((optie) => (
+                  // Elke datumoptie is een klikbare knop.
                   <TouchableOpacity
                     key={optie}
                     style={[
@@ -181,6 +250,7 @@ export default function Reserveer() {
               </View>
             )}
 
+            {/* Knop waarmee de tijdkeuze wordt geopend. */}
             <TouchableOpacity
               style={styles.selectInput}
               onPress={() => {
@@ -188,14 +258,17 @@ export default function Reserveer() {
                 setShowDatumOpties(false);
               }}
             >
+              {/* Toont de gekozen tijd of een placeholder. */}
               <Text style={tijd ? styles.selectText : styles.selectPlaceholder}>
                 {tijd || 'Kies tijd'}
               </Text>
             </TouchableOpacity>
 
+            {/* Toont de tijdopties als de tijdkeuze open is. */}
             {showTijdOpties && (
               <View style={styles.optiesContainer}>
                 {tijdOpties.map((optie) => (
+                  // Elke tijdoptie is een klikbare knop.
                   <TouchableOpacity
                     key={optie}
                     style={[
@@ -213,7 +286,7 @@ export default function Reserveer() {
               </View>
             )}
 
-            {/* AANTAL PERSONEN */}
+            {/* Invoerveld voor het aantal personen. */}
             <TextInput
               style={styles.input}
               placeholder="Aantal personen"
@@ -222,14 +295,14 @@ export default function Reserveer() {
               keyboardType="numeric"
             />
 
-            {/* MELDING ONDER AANTAL PERSONEN */}
+            {/* Meldingsblok onder het formulier. */}
             {showMelding && (
               <View style={styles.melding}>
                 <Text style={styles.meldingText}>{melding}</Text>
               </View>
             )}
 
-            {/* KNOP */}
+            {/* Knop om de reservering te versturen. */}
             <TouchableOpacity style={styles.button} onPress={reserveer}>
               <Text style={styles.buttonText}>
                 RESERVERING VERSTUREN
@@ -242,33 +315,39 @@ export default function Reserveer() {
   );
 }
 
-// STYLES
+// Styling voor alle onderdelen van de pagina.
 const styles = StyleSheet.create({
+  // Zorgt dat de achtergrond het hele scherm vult.
   background: {
     flex: 1,
   },
 
+  // Donkere transparante laag over de achtergrond.
   overlay: {
     flex: 1,
     backgroundColor: 'rgba(10, 7, 4, 0.58)',
   },
 
+  // Plaatst de inhoud onder de navbar en centreert het formulier.
   content: {
     paddingTop: 120,
     paddingHorizontal: 25,
     alignItems: 'center',
   },
 
+  // Styling voor het titelgedeelte.
   hero: {
     marginBottom: 25,
     alignItems: 'center',
   },
 
+  // Kleine tekst boven de titel.
   eyebrow: {
     color: '#C9903B',
     fontWeight: '800',
   },
 
+  // Grote titel van de pagina.
   title: {
     fontSize: 32,
     color: '#fff',
@@ -276,12 +355,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
+  // Subtitel onder de titel.
   subtitle: {
     color: '#ddd',
     textAlign: 'center',
     marginTop: 10,
   },
 
+  // Witte formulierkaart.
   formPanel: {
     width: '50%',
     backgroundColor: '#fff',
@@ -289,6 +370,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
+  // Styling voor normale invoervelden.
   input: {
     backgroundColor: '#f2f2f2',
     padding: 12,
@@ -296,6 +378,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
 
+  // Styling voor de datum- en tijdknoppen.
   selectInput: {
     backgroundColor: '#f2f2f2',
     padding: 12,
@@ -303,20 +386,24 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
 
+  // Tekstkleur als er een datum of tijd gekozen is.
   selectText: {
     color: '#111',
   },
 
+  // Tekstkleur als er nog niets gekozen is.
   selectPlaceholder: {
     color: '#777',
   },
 
+  // Container voor de datum- en tijdopties.
   optiesContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginBottom: 10,
   },
 
+  // Styling voor een losse optieknop.
   optie: {
     backgroundColor: '#f2f2f2',
     paddingHorizontal: 12,
@@ -326,15 +413,18 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
 
+  // Styling voor de gekozen optie.
   geselecteerdeOptie: {
     backgroundColor: '#C9903B',
   },
 
+  // Tekst in een datum- of tijdoptie.
   optieText: {
     color: '#111',
     fontWeight: '700',
   },
 
+  // Styling voor de verzendknop.
   button: {
     backgroundColor: '#C9903B',
     padding: 15,
@@ -343,11 +433,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 
+  // Tekst in de verzendknop.
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',
   },
 
+  // Styling voor de melding.
   melding: {
     backgroundColor: '#C9903B',
     padding: 12,
@@ -355,6 +447,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
+  // Tekst in de melding.
   meldingText: {
     color: '#fff',
     fontWeight: '700',

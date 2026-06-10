@@ -27,13 +27,10 @@ export default function App() {
     'Kip Supreme',
     'Tiramisu',
     'Cheesecake',
-    'Lava Cake',
+    'Lava',
     'Crème Brûlée',
     'Vanille-ijs',
-    'Espresso',
-    'Cappuccino',
-    'Latte Macchiato',
-    'Chocolademelk',
+    
   ];
 
   const resultaten = gerechten.filter(item =>
@@ -54,7 +51,7 @@ export default function App() {
       'Kip Supreme': '/KipSupreme',
       Tiramisu: '/Tiramisu',
       Cheesecake: '/Cheesecake',
-      'Lava Cake': '/Lava',
+      'Lava': '/Lava',
       'Crème Brûlée': '/Creme',
       'Vanille-ijs': '/VanilleIjs',
     };
