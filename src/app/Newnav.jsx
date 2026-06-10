@@ -10,12 +10,9 @@ export default function Nav() {
         </Link>
 
 
-
         <Link href="/Menu" style={styles.navText}>
           MENU
         </Link>
-
-     
 
         <Link href="/Contact" style={styles.navText}>
           CONTACT
