@@ -23,6 +23,31 @@ export default function Reserveer() {
   // MELDING STATES
   const [melding, setMelding] = useState('');
   const [showMelding, setShowMelding] = useState(false);
+  const [showDatumOpties, setShowDatumOpties] = useState(false);
+  const [showTijdOpties, setShowTijdOpties] = useState(false);
+
+  const datumOpties = Array.from({ length: 14 }, (_, index) => {
+    const optie = new Date();
+    optie.setDate(optie.getDate() + index);
+
+    const jaar = optie.getFullYear();
+    const maand = String(optie.getMonth() + 1).padStart(2, '0');
+    const dag = String(optie.getDate()).padStart(2, '0');
+
+    return `${jaar}-${maand}-${dag}`;
+  });
+
+  const tijdOpties = [
+    '17:00',
+    '17:30',
+    '18:00',
+    '18:30',
+    '19:00',
+    '19:30',
+    '20:00',
+    '20:30',
+    '21:00',
+  ];
 
   const toonMelding = (tekst) => {
     setMelding(tekst);
@@ -34,14 +59,6 @@ export default function Reserveer() {
     setNaam(tekst.replace(/[^a-zA-Z\s]/g, ''));
   };
 
-  const veranderDatum = (tekst) => {
-    setDatum(tekst.replace(/[^0-9-]/g, ''));
-  };
-
-  const veranderTijd = (tekst) => {
-    setTijd(tekst.replace(/[^0-9:]/g, ''));
-  };
-
   const veranderPersonen = (tekst) => {
     setPersonen(tekst.replace(/[^0-9]/g, ''));
   };
@@ -50,12 +67,13 @@ export default function Reserveer() {
   const reserveer = () => {
     Keyboard.dismiss();
 
-  const emailIsGeldig = email.trim().toLowerCase().endsWith('@gmail.com');    const tijdWaarde = tijd.trim();
+    const emailIsGeldig = email.trim().toLowerCase().endsWith('@gmail.com');
+    const tijdWaarde = tijd.trim();
     const tijdDelen = tijdWaarde.split(':');
     const uur = Number(tijdDelen[0]);
     const minuten = Number(tijdDelen[1]);
     const tijdIsGeldig =
-     
+      tijdDelen.length === 2 &&
       uur >= 0 &&
       uur <= 23 &&
       minuten >= 0 &&
@@ -131,21 +149,69 @@ export default function Reserveer() {
               autoCapitalize="none"
             />
 
-            <TextInput
-              style={styles.input}
-              placeholder="Datum"
-              value={datum}
-              onChangeText={veranderDatum}
-              keyboardType="numbers-and-punctuation"
-            />
+            <TouchableOpacity
+              style={styles.selectInput}
+              onPress={() => {
+                setShowDatumOpties(!showDatumOpties);
+                setShowTijdOpties(false);
+              }}
+            >
+              <Text style={datum ? styles.selectText : styles.selectPlaceholder}>
+                {datum || 'Kies datum'}
+              </Text>
+            </TouchableOpacity>
 
-            <TextInput
-              style={styles.input}
-              placeholder="Tijd"
-              value={tijd}
-              onChangeText={veranderTijd}
-              keyboardType="numbers-and-punctuation"
-            />
+            {showDatumOpties && (
+              <View style={styles.optiesContainer}>
+                {datumOpties.map((optie) => (
+                  <TouchableOpacity
+                    key={optie}
+                    style={[
+                      styles.optie,
+                      datum === optie && styles.geselecteerdeOptie,
+                    ]}
+                    onPress={() => {
+                      setDatum(optie);
+                      setShowDatumOpties(false);
+                    }}
+                  >
+                    <Text style={styles.optieText}>{optie}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            )}
+
+            <TouchableOpacity
+              style={styles.selectInput}
+              onPress={() => {
+                setShowTijdOpties(!showTijdOpties);
+                setShowDatumOpties(false);
+              }}
+            >
+              <Text style={tijd ? styles.selectText : styles.selectPlaceholder}>
+                {tijd || 'Kies tijd'}
+              </Text>
+            </TouchableOpacity>
+
+            {showTijdOpties && (
+              <View style={styles.optiesContainer}>
+                {tijdOpties.map((optie) => (
+                  <TouchableOpacity
+                    key={optie}
+                    style={[
+                      styles.optie,
+                      tijd === optie && styles.geselecteerdeOptie,
+                    ]}
+                    onPress={() => {
+                      setTijd(optie);
+                      setShowTijdOpties(false);
+                    }}
+                  >
+                    <Text style={styles.optieText}>{optie}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            )}
 
             {/* AANTAL PERSONEN */}
             <TextInput
@@ -228,6 +294,45 @@ const styles = StyleSheet.create({
     padding: 12,
     marginBottom: 10,
     borderRadius: 6,
+  },
+
+  selectInput: {
+    backgroundColor: '#f2f2f2',
+    padding: 12,
+    marginBottom: 10,
+    borderRadius: 6,
+  },
+
+  selectText: {
+    color: '#111',
+  },
+
+  selectPlaceholder: {
+    color: '#777',
+  },
+
+  optiesContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: 10,
+  },
+
+  optie: {
+    backgroundColor: '#f2f2f2',
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    borderRadius: 6,
+    marginRight: 8,
+    marginBottom: 8,
+  },
+
+  geselecteerdeOptie: {
+    backgroundColor: '#C9903B',
+  },
+
+  optieText: {
+    color: '#111',
+    fontWeight: '700',
   },
 
   button: {
