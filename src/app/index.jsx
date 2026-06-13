@@ -12,8 +12,10 @@ import Nav from './Newnav';
 import { router } from 'expo-router';
 
 export default function App() {
+  // Zoek input state
   const [searchInput, setSearchInput] = useState('');
 
+  // Lijst met gerechten
   const gerechten = [
     'Carpaccio',
     'Tomatensoep',
@@ -30,13 +32,17 @@ export default function App() {
     'Lava',
     'Crème Brûlée',
     'Vanille-ijs',
-    
   ];
+
+// filter() → loopt door alle gerechten
+// toLowerCase() → maakt alles klein (hoofdletter-ongevoelig zoeken)
+// includes() → kijkt of de tekst voorkomt in het gerecht
 
   const resultaten = gerechten.filter(item =>
     item.toLowerCase().includes(searchInput.toLowerCase())
   );
 
+  // Navigatie per gerecht
   const handleSelect = (gerecht) => {
     const routes = {
       Carpaccio: '/Carpaccio',
@@ -56,65 +62,87 @@ export default function App() {
       'Vanille-ijs': '/VanilleIjs',
     };
 
+// Navigeer naar pagina als route bestaat
     if (routes[gerecht]) {
       router.push(routes[gerecht]);
     }
   };
 
   return (
+    // Achtergrond
     <ImageBackground
       source={require('./images/home.png')}
       style={styles.backgroundImage}
       resizeMode="cover"
     >
+    
       <View style={styles.overlay}>
+
+        
         <Nav />
 
+       
         <View style={styles.heroContent}>
+
+          
           <Text style={styles.eyebrow}>Restaurant & Lounge</Text>
 
+          
           <Text style={styles.welkom}>WELKOM BIJ</Text>
-
           <Text style={styles.velor}>VÉLOR</Text>
 
+          
           <View style={styles.accentLine} />
 
+          
           <Text style={styles.subtitle}>
             Een verfijnde culinaire ervaring waar gastronomie,
             sfeer en vakmanschap samenkomen.
           </Text>
 
-          <View style={styles.searchContainer}>
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Zoek een gerecht..."
-              placeholderTextColor="#888"
-              value={searchInput}
-              onChangeText={setSearchInput}
-            />
+        
+<View style={styles.searchContainer}>
 
-            {searchInput.length > 0 && (
-              <View style={styles.resultsContainer}>
-                {resultaten.map((item, index) => (
-                  <TouchableOpacity
-                    key={index}
-                    onPress={() => handleSelect(item)}
-                  >
-                    <Text style={styles.resultItem}>
-                      {item}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            )}
-          </View>
+  {/* Zoekinput */}
+  <TextInput
+    style={styles.searchInput}
+    placeholder="Zoek een gerecht..."
+    placeholderTextColor="#888"
+    value={searchInput}
+    onChangeText={setSearchInput}
+  />
+
+  {/* Toon resultaten als er getypt wordt */}
+  {searchInput.length > 0 && (
+    <View style={styles.resultsContainer}>
+      
+      {/* Resultatenlijst */}
+      {resultaten.map((item, index) => (
+        <TouchableOpacity
+          key={index}
+          onPress={() => handleSelect(item)}
+        >
+          <Text style={styles.resultItem}>
+            {item}
+          </Text>
+        </TouchableOpacity>
+      ))}
+
+    </View>
+  )}
+</View>
+        
+        
+
         </View>
       </View>
     </ImageBackground>
   );
 }
 
+// Styles
 const styles = StyleSheet.create({
+
   backgroundImage: {
     flex: 1,
     width: '100%',
@@ -170,6 +198,7 @@ const styles = StyleSheet.create({
     marginTop: 24,
     maxWidth: 550,
   },
+
 
   searchContainer: {
     marginTop: 30,
