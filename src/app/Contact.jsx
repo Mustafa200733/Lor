@@ -10,7 +10,7 @@ export default function Contact() {
 
   <View style={styles.contactPanel}>
     <View style={styles.card}>
-      <Image source={require('./images/loc.png')} style={styles.icon} />
+      <Image source={require('./images/loc.png')} style={styles.loc} />
       <View style={styles.info}>
         <Text style={styles.label}>Adres</Text>
         <Text style={styles.text}>Hoofdstraat 123</Text>
@@ -19,7 +19,7 @@ export default function Contact() {
     </View>
 
     <View style={styles.card}>
-      <Image source={require('./images/tel.png')} style={styles.icon} />
+      <Image source={require('./images/tel.png')} style={styles.tel} />
       <View style={styles.info}>
         <Text style={styles.label}>Telefoon</Text>
         <Text style={styles.text}>+31 6 12345678</Text>
@@ -27,7 +27,7 @@ export default function Contact() {
     </View>
 
     <View style={styles.card}>
-      <Image source={require('./images/mail.png')} style={styles.icon} />
+      <Image source={require('./images/mail.png')} style={styles.mail} />
       <View style={styles.info}>
         <Text style={styles.label}>E-mail</Text>
         <Text style={styles.text}>info@Velor.nl</Text>
@@ -76,10 +76,28 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
 
-  icon: {
+  loc: {
+    width: 48,
+    height: 48,
+    marginRight: 10,
+    tintColor: '#B89A78',
+    resizeMode: 'contain',
+    left: -2 ,
+
+  },
+  tel: {
+    width: 28,
+    height: 28,
+    marginRight: 28,
+    tintColor: '#B89A78',
+    resizeMode: 'contain',
+    left:7 ,
+  },
+
+  mail: {
     width: 38,
     height: 38,
-    marginRight: 28,
+    marginRight: 18,
     tintColor: '#B89A78',
     resizeMode: 'contain',
   },
