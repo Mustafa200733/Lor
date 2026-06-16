@@ -1,36 +1,37 @@
 import React, { useState } from 'react';
-import {
-  ImageBackground,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-
+import {ImageBackground, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import Nav from './Newnav';
 
 export default function Reserveer() {
-  // Form states
+ 
   const [naam, setNaam] = useState('');
   const [email, setEmail] = useState('');
   const [datum, setDatum] = useState('');
   const [tijd, setTijd] = useState('');
   const [personen, setPersonen] = useState('');
 
-  // UI states
+ 
   const [melding, setMelding] = useState('');
   const [showMelding, setShowMelding] = useState(false);
   const [showDatumOpties, setShowDatumOpties] = useState(false);
   const [showTijdOpties, setShowTijdOpties] = useState(false);
 
-  // Datum opties (14 dagen)
-  const datumOpties = Array.from({ length: 14 }, (_, i) => {
-    const d = new Date();
-    d.setDate(d.getDate() + i);
-    return d.toISOString().split('T')[0];
-  });
+// _ → wordt niet gebruikt (oude waarde)
+// i → de teller (0 t/m 13) index
+//  maak array met 14 opeenvolgende datums
+const datumOpties = Array.from({ length: 14 }, (_, i) => {
+
+  const d = new Date();
+
+  // Haal het huidige dagnummer op (bijv. 16)
+  const huidigeDag = d.getDate();
+
+  // Tel i dagen op bij de huidige dag 
+  d.setDate(huidigeDag + i);
+
+  // Zet datum om naar Nederlands formaat (dd-mm-jjjj)
+  return d.toLocaleDateString('nl-NL');
+});
 
   // Tijd opties
   const tijdOpties = [

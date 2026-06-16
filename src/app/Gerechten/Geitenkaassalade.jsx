@@ -1,21 +1,21 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
-export default function Tiramisu() {
+import Nav from '../Newnav';
+export default function Geitenkaassalade() {
   return (
     <View style={styles.container}>
 <Nav/>
       <Text style={styles.title}>
-        Tiramisu
+        Geitenkaassalade
       </Text>
 
       <Text style={styles.description}>
-        Klassiek Italiaans dessert met lagen van mascarponecrème,
-        espresso-doordrenkte lange vingers en een vleugje cacao.{"\n\n"}
-        Een rijke, romige en licht bittere balans van smaken.
+        Frisse salade met lauwwarme geitenkaas, geroosterde noten,{"\n"}
+        honingdressing en een mix van knapperige seizoensgroenten.{"\n\n"}
+        Een perfecte balans tussen zoet, hartig en fris.
       </Text>
 
       <Text style={styles.price}>
-        €7,50
+        €9,50
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -25,12 +25,12 @@ export default function Tiramisu() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Onze tiramisu wordt vers bereid met echte espresso en
-        hoogwaardige mascarpone voor een authentieke smaakbeleving.
+        Onze geitenkaas wordt licht gegratineerd en direct geserveerd
+        voor een warme, romige kern met een knapperige buitenkant.
       </Text>
 
       <Image
-        source={require('./images/Tiramisu.png')}
+        source={require('../images/geitenkaas.png')}
         style={styles.image}
       />
 

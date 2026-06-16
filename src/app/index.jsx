@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  TouchableOpacity,
-  TextInput,
+import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, TextInput,
 } from 'react-native';
 
 import Nav from './Newnav';
 import { router } from 'expo-router';
 
 export default function App() {
-  // Zoek input state
+  
   const [searchInput, setSearchInput] = useState('');
 
   // Lijst met gerechten
@@ -45,21 +39,21 @@ export default function App() {
   // Navigatie per gerecht
   const handleSelect = (gerecht) => {
     const routes = {
-      Carpaccio: '/Carpaccio',
-      Tomatensoep: '/Tomatensoep',
-      Bruschetta: '/Bruschetta',
-      Garnalencocktail: '/Naal',
-      Geitenkaassalade: '/Geitenkaassalade',
-      'Steak Deluxe': '/SteakDeluxe',
-      'Gegrilde Zalm': '/GegrildeZalm',
-      'Pasta Alfredo': '/PastaAlfredo',
-      Truffelrisotto: '/Truffelrisotto',
-      'Kip Supreme': '/KipSupreme',
-      Tiramisu: '/Tiramisu',
-      Cheesecake: '/Cheesecake',
-      'Lava': '/Lava',
-      'Crème Brûlée': '/Creme',
-      'Vanille-ijs': '/VanilleIjs',
+      Carpaccio: '/Gerechten/Carpaccio',
+      Tomatensoep: '/Gerechten/Tomatensoep',
+      Bruschetta: '/Gerechten/Bruschetta',
+      Garnalencocktail: '/Gerechten/Naal',
+      Geitenkaassalade: '/Gerechten/Geitenkaassalade',
+      'Steak Deluxe': '/Gerechten/SteakDeluxe',
+      'Gegrilde Zalm': '/Gerechten/GegrildeZalm',
+      'Pasta Alfredo': '/Gerechten/PastaAlfredo',
+      Truffelrisotto: '/Gerechten/Truffelrisotto',
+      'Kip Supreme': '/Gerechten/KipSupreme',
+      Tiramisu: '/Gerechten/Tiramisu',
+      Cheesecake: '/Gerechten/Cheesecake',
+      'Lava': '/Gerechten/Lava',
+      'Crème Brûlée': '/Gerechten/Creme',
+      'Vanille-ijs': '/Gerechten/VanilleIjs',
     };
 
 // Navigeer naar pagina als route bestaat

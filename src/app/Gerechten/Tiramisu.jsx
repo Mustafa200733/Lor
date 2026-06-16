@@ -1,21 +1,21 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
-export default function VanilleIjs() {
+import Nav from '../Newnav';
+export default function Tiramisu() {
   return (
     <View style={styles.container}>
 <Nav/>
       <Text style={styles.title}>
-        Vanille IJs
+        Tiramisu
       </Text>
 
       <Text style={styles.description}>
-        Romig vanille-ijs gemaakt van echte vanillebonen.{"\n\n"}
-        Een zachte en klassieke dessertfavoriet met een pure,
-        volle smaak en een fluweelzachte textuur.
+        Klassiek Italiaans dessert met lagen van mascarponecrème,
+        espresso-doordrenkte lange vingers en een vleugje cacao.{"\n\n"}
+        Een rijke, romige en licht bittere balans van smaken.
       </Text>
 
       <Text style={styles.price}>
-        €5,50
+        €7,50
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -25,12 +25,12 @@ export default function VanilleIjs() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Ons vanille-ijs wordt ambachtelijk bereid met echte vanille
-        voor een pure en natuurlijke smaakbeleving.
+        Onze tiramisu wordt vers bereid met echte espresso en
+        hoogwaardige mascarpone voor een authentieke smaakbeleving.
       </Text>
 
       <Image
-        source={require('./images/chocoijs.png')}
+        source={require('../images/Tiramisu.png')}
         style={styles.image}
       />
 

@@ -1,24 +1,21 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
-
-export default function Truffelrisotto() {
+import Nav from '../Newnav';
+export default function Tomatensoep() {
   return (
     <View style={styles.container}>
-      <Nav />
-
+<Nav/>
       <Text style={styles.title}>
-        Truffelrisotto
+        Tomatensoep
       </Text>
 
       <Text style={styles.description}>
-        Romige risotto bereid met Arborio rijst,{"\n"}
-        verse truffel, Parmezaanse kaas.{"\n\n"}
-        Een verfijnd Italiaans gerecht met een rijke,
-        romige textuur en intense truffelsmaak.
+        Fluweelzachte tomatensoep gemaakt van rijpe tomaten,
+        verse basilicum en een lichte kruidenmix.{"\n\n"}
+        Een klassieke, warme starter met een volle en frisse smaak.
       </Text>
 
       <Text style={styles.price}>
-€21,00
+        €6,50
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -28,15 +25,15 @@ export default function Truffelrisotto() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Een van onze meest geliefde gerechten,
-        afgewerkt met vers geraspte zwarte truffel
-        voor een extra luxe smaakbeleving.
+        Onze tomatensoep wordt dagelijks vers bereid met langzaam
+        gegaarde tomaten voor een diepe, natuurlijke smaak.
       </Text>
 
       <Image
-        source={require('./images/Truffelrisotto .png')}
+        source={require('../images/tomaat.png')}
         style={styles.image}
       />
+
     </View>
   );
 }

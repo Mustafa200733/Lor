@@ -1,25 +1,21 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
-import Nav from './Newnav';
-
-export default function Carpaccio() {
+import { View, Text, Image, StyleSheet } from 'react-native';
+import Nav from '../Newnav';
+export default function SteakDeluxe() {
   return (
     <View style={styles.container}>
-      <Nav />
-
+<Nav/>
       <Text style={styles.title}>
-        Carpaccio
+        Steak Deluxe
       </Text>
 
       <Text style={styles.description}>
-        Dun gesneden rundercarpaccio geserveerd met{"\n"}
-        Parmezaanse kaas, rucola, pijnboompitten{"\n"}
-        en een verfijnde citroendressing.{"\n\n"}
-        Een elegant voorgerecht met een perfecte
-        balans tussen frisheid en smaak.
+        Malse premium biefstuk, perfect gegrild op de grill{"\n"}
+        en geserveerd met seizoensgroenten en een rijke pepersaus.{"\n\n"}
+        Een krachtig en verfijnd gerecht voor de echte vleesliefhebber.
       </Text>
 
       <Text style={styles.price}>
-       €10,50
+        €24,50
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -29,16 +25,15 @@ export default function Carpaccio() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Onze carpaccio wordt bereid met zorgvuldig
-        geselecteerd rundvlees en afgewerkt met
-        verse ingrediënten voor een verfijnde
-        culinaire ervaring.
+        Onze steak wordt op hoge temperatuur gegrild om de perfecte
+        sappigheid en smaak te behouden.
       </Text>
 
       <Image
-        source={require('./images/carpacio.png')}
+        source={require('../images/steakdeluxe.png')}
         style={styles.image}
       />
+
     </View>
   );
 }

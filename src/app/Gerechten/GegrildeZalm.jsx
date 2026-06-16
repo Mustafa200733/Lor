@@ -1,22 +1,21 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
-export default function Garnaal() {
+import Nav from '../Newnav';
+export default function GegrildeZalm() {
   return (
     <View style={styles.container}>
 <Nav/>
       <Text style={styles.title}>
-        Garnalen Cocktail
+        Gegrilde Zalm
       </Text>
 
       <Text style={styles.description}>
-        Frisse garnalencocktail met malse Noordzeegarnalen,
-        romige cocktailsaus, citroen en knapperige sla.{"\n\n"}
-        Een klassiek en verfijnd voorgerecht met een frisse,
-        zachte en licht romige smaak.
+        Perfect gegrilde zalmfilet met een knapperige buitenkant en een sappige binnenkant.{"\n\n"}
+        Geserveerd met seizoensgroenten en een lichte citroen-botersaus
+        voor een frisse en verfijnde smaak.
       </Text>
 
       <Text style={styles.price}>
-        11,50
+       €22,50
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -26,12 +25,12 @@ export default function Garnaal() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Onze garnalen worden dagelijks vers geleverd en
-        zorgvuldig bereid voor de beste smaak en textuur.
+        Onze zalm wordt dagelijks vers gegrild op hoge temperatuur
+        om de natuurlijke smaak en structuur perfect te behouden.
       </Text>
 
       <Image
-        source={require('./images/garnaal.png')}
+        source={require('../images/zalm.png')}
         style={styles.image}
       />
 

@@ -1,21 +1,22 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
-export default function Geitenkaassalade() {
+import Nav from '../Newnav';
+
+export default function Lava() {
   return (
     <View style={styles.container}>
-<Nav/>
+      <Nav />
+
       <Text style={styles.title}>
-        Geitenkaassalade
+        Lava Cake
       </Text>
 
       <Text style={styles.description}>
-        Frisse salade met lauwwarme geitenkaas, geroosterde noten,{"\n"}
-        honingdressing en een mix van knapperige seizoensgroenten.{"\n\n"}
-        Een perfecte balans tussen zoet, hartig en fris.
+        Warme chocoladecake met een zachte, vloeibare kern van pure chocolade.{"\n\n"}
+        Geserveerd met vanille-ijs en een vleugje cacao.
       </Text>
 
       <Text style={styles.price}>
-        €9,50
+        €8,00
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -25,12 +26,12 @@ export default function Geitenkaassalade() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Onze geitenkaas wordt licht gegratineerd en direct geserveerd
-        voor een warme, romige kern met een knapperige buitenkant.
+        Onze lava cake wordt à la minute gebakken zodat de chocolade
+        perfect smelt van binnen bij het serveren.
       </Text>
 
       <Image
-        source={require('./images/geitenkaas.png')}
+        source={require('../images/Lava.png')}
         style={styles.image}
       />
 

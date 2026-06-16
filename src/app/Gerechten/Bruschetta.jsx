@@ -1,6 +1,6 @@
 import { View, Text, Image} from 'react-native';
 import { StyleSheet } from 'react-native';
-import Nav from './Newnav';
+import Nav from '../Newnav';
 export default function Bruschetta() {
   return (
    <View style={styles.container}>
@@ -33,7 +33,7 @@ export default function Bruschetta() {
   een authentieke Italiaanse smaakbeleving.
 </Text>
          <Image
-           source={require('./images/burseta.png')}
+           source={require('../images/burseta.png')}
            style={styles.image}
          />
        </View>

@@ -1,21 +1,22 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
-export default function Tomatensoep() {
+import Nav from '../Newnav';
+export default function Cheesecake() {
   return (
     <View style={styles.container}>
 <Nav/>
       <Text style={styles.title}>
-        Tomatensoep
+        Cheesecake
       </Text>
 
       <Text style={styles.description}>
-        Fluweelzachte tomatensoep gemaakt van rijpe tomaten,
-        verse basilicum en een lichte kruidenmix.{"\n\n"}
-        Een klassieke, warme starter met een volle en frisse smaak.
+        Romige cheesecake op een krokante biscuitbodem,
+        afgewerkt met een frisse coulis van rood fruit.{"\n\n"}
+        Een zachte, rijke dessertklassieker met een perfecte balans
+        tussen zoet en fris.
       </Text>
 
       <Text style={styles.price}>
-        €6,50
+       €6,50
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -25,12 +26,13 @@ export default function Tomatensoep() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Onze tomatensoep wordt dagelijks vers bereid met langzaam
-        gegaarde tomaten voor een diepe, natuurlijke smaak.
+        Onze cheesecake wordt dagelijks vers bereid
+        en licht gekoeld geserveerd voor de ultieme
+        romige textuur.
       </Text>
 
       <Image
-        source={require('./images/tomaat.png')}
+        source={require('../images/Cheesecake.png')}
         style={styles.image}
       />
 

@@ -1,21 +1,21 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
-export default function GegrildeZalm() {
+import Nav from '../Newnav';
+export default function PastaAlfredo() {
   return (
     <View style={styles.container}>
 <Nav/>
       <Text style={styles.title}>
-        Gegrilde Zalm
+        Pasta Alfredo
       </Text>
 
       <Text style={styles.description}>
-        Perfect gegrilde zalmfilet met een knapperige buitenkant en een sappige binnenkant.{"\n\n"}
-        Geserveerd met seizoensgroenten en een lichte citroen-botersaus
-        voor een frisse en verfijnde smaak.
+        Romige pasta met verse roomsaus, Parmezaanse kaas
+        en een vleugje knoflook.{"\n\n"}
+        Een klassiek Italiaans gerecht dat rijk, zacht en vol van smaak is.
       </Text>
 
       <Text style={styles.price}>
-       €22,50
+        €18,00
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -25,12 +25,12 @@ export default function GegrildeZalm() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Onze zalm wordt dagelijks vers gegrild op hoge temperatuur
-        om de natuurlijke smaak en structuur perfect te behouden.
+        Onze Alfredo saus wordt vers bereid met echte room en
+        langzaam gerijpte Parmezaanse kaas voor maximale smaak.
       </Text>
 
       <Image
-        source={require('./images/zalm.png')}
+        source={require('../images/pasta.png')}
         style={styles.image}
       />
 

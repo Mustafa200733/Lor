@@ -1,22 +1,25 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
-export default function Cheesecake() {
+import { View, Text, StyleSheet, Image } from 'react-native';
+import Nav from '../Newnav';
+
+export default function Carpaccio() {
   return (
     <View style={styles.container}>
-<Nav/>
+      <Nav />
+
       <Text style={styles.title}>
-        Cheesecake
+        Carpaccio
       </Text>
 
       <Text style={styles.description}>
-        Romige cheesecake op een krokante biscuitbodem,
-        afgewerkt met een frisse coulis van rood fruit.{"\n\n"}
-        Een zachte, rijke dessertklassieker met een perfecte balans
-        tussen zoet en fris.
+        Dun gesneden rundercarpaccio geserveerd met{"\n"}
+        Parmezaanse kaas, rucola, pijnboompitten{"\n"}
+        en een verfijnde citroendressing.{"\n\n"}
+        Een elegant voorgerecht met een perfecte
+        balans tussen frisheid en smaak.
       </Text>
 
       <Text style={styles.price}>
-       €6,50
+       €10,50
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -26,16 +29,16 @@ export default function Cheesecake() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Onze cheesecake wordt dagelijks vers bereid
-        en licht gekoeld geserveerd voor de ultieme
-        romige textuur.
+        Onze carpaccio wordt bereid met zorgvuldig
+        geselecteerd rundvlees en afgewerkt met
+        verse ingrediënten voor een verfijnde
+        culinaire ervaring.
       </Text>
 
       <Image
-        source={require('./images/Cheesecake.png')}
+        source={require('../images/carpacio.png')}
         style={styles.image}
       />
-
     </View>
   );
 }

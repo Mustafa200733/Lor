@@ -1,21 +1,21 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
-export default function PastaAlfredo() {
+import Nav from '../Newnav';
+export default function VanilleIjs() {
   return (
     <View style={styles.container}>
 <Nav/>
       <Text style={styles.title}>
-        Pasta Alfredo
+        Vanille IJs
       </Text>
 
       <Text style={styles.description}>
-        Romige pasta met verse roomsaus, Parmezaanse kaas
-        en een vleugje knoflook.{"\n\n"}
-        Een klassiek Italiaans gerecht dat rijk, zacht en vol van smaak is.
+        Romig vanille-ijs gemaakt van echte vanillebonen.{"\n\n"}
+        Een zachte en klassieke dessertfavoriet met een pure,
+        volle smaak en een fluweelzachte textuur.
       </Text>
 
       <Text style={styles.price}>
-        €18,00
+        €5,50
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -25,12 +25,12 @@ export default function PastaAlfredo() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Onze Alfredo saus wordt vers bereid met echte room en
-        langzaam gerijpte Parmezaanse kaas voor maximale smaak.
+        Ons vanille-ijs wordt ambachtelijk bereid met echte vanille
+        voor een pure en natuurlijke smaakbeleving.
       </Text>
 
       <Image
-        source={require('./images/pasta.png')}
+        source={require('../images/chocoijs.png')}
         style={styles.image}
       />
 

@@ -1,23 +1,22 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
-export default function KipSupreme() {
+import Nav from '../Newnav';
+export default function Garnaal() {
   return (
     <View style={styles.container}>
 <Nav/>
       <Text style={styles.title}>
-        Kip Supreme
+        Garnalen Cocktail
       </Text>
 
       <Text style={styles.description}>
-        Sappige kipfilet geserveerd met romige saus,
-        seizoensgroenten en een verfijnde kruidenmix.{"\n\n"}
-        Een rijk en vol gerecht met een perfecte balans tussen
-        romigheid en kruidige smaken.
+        Frisse garnalencocktail met malse Noordzeegarnalen,
+        romige cocktailsaus, citroen en knapperige sla.{"\n\n"}
+        Een klassiek en verfijnd voorgerecht met een frisse,
+        zachte en licht romige smaak.
       </Text>
 
       <Text style={styles.price}>
-        
-€19,50
+        11,50
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -27,12 +26,12 @@ export default function KipSupreme() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Onze kip wordt dagelijks vers bereid en langzaam gegaard
-        voor een extra sappige en malse structuur.
+        Onze garnalen worden dagelijks vers geleverd en
+        zorgvuldig bereid voor de beste smaak en textuur.
       </Text>
 
       <Image
-        source={require('./images/KipSupreme.png')}
+        source={require('../images/garnaal.png')}
         style={styles.image}
       />
 

@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
-import Nav from './Newnav';
+import Nav from '../Newnav';
 export default function Creme() {
   return (
     <View style={styles.container}>
@@ -29,7 +29,7 @@ export default function Creme() {
             </Text>
       
       <Image
-              source={require('./images/brulee.png')}
+              source={require('../images/brulee.png')}
               style={styles.image}
             />
     </View>

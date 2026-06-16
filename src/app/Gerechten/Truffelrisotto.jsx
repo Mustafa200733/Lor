@@ -1,22 +1,24 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
+import Nav from '../Newnav';
 
-export default function Lava() {
+export default function Truffelrisotto() {
   return (
     <View style={styles.container}>
       <Nav />
 
       <Text style={styles.title}>
-        Lava Cake
+        Truffelrisotto
       </Text>
 
       <Text style={styles.description}>
-        Warme chocoladecake met een zachte, vloeibare kern van pure chocolade.{"\n\n"}
-        Geserveerd met vanille-ijs en een vleugje cacao.
+        Romige risotto bereid met Arborio rijst,{"\n"}
+        verse truffel, Parmezaanse kaas.{"\n\n"}
+        Een verfijnd Italiaans gerecht met een rijke,
+        romige textuur en intense truffelsmaak.
       </Text>
 
       <Text style={styles.price}>
-        €8,00
+€21,00
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -26,15 +28,15 @@ export default function Lava() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Onze lava cake wordt à la minute gebakken zodat de chocolade
-        perfect smelt van binnen bij het serveren.
+        Een van onze meest geliefde gerechten,
+        afgewerkt met vers geraspte zwarte truffel
+        voor een extra luxe smaakbeleving.
       </Text>
 
       <Image
-        source={require('./images/Lava.png')}
+        source={require('../images/Truffelrisotto .png')}
         style={styles.image}
       />
-
     </View>
   );
 }

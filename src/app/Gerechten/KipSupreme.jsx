@@ -1,21 +1,23 @@
 import { View, Text, Image, StyleSheet } from 'react-native';
-import Nav from './Newnav';
-export default function SteakDeluxe() {
+import Nav from '../Newnav';
+export default function KipSupreme() {
   return (
     <View style={styles.container}>
 <Nav/>
       <Text style={styles.title}>
-        Steak Deluxe
+        Kip Supreme
       </Text>
 
       <Text style={styles.description}>
-        Malse premium biefstuk, perfect gegrild op de grill{"\n"}
-        en geserveerd met seizoensgroenten en een rijke pepersaus.{"\n\n"}
-        Een krachtig en verfijnd gerecht voor de echte vleesliefhebber.
+        Sappige kipfilet geserveerd met romige saus,
+        seizoensgroenten en een verfijnde kruidenmix.{"\n\n"}
+        Een rijk en vol gerecht met een perfecte balans tussen
+        romigheid en kruidige smaken.
       </Text>
 
       <Text style={styles.price}>
-        €24,50
+        
+€19,50
       </Text>
 
       <Text style={styles.chefTitle}>
@@ -25,12 +27,12 @@ export default function SteakDeluxe() {
       <View style={styles.line} />
 
       <Text style={styles.chefText}>
-        Onze steak wordt op hoge temperatuur gegrild om de perfecte
-        sappigheid en smaak te behouden.
+        Onze kip wordt dagelijks vers bereid en langzaam gegaard
+        voor een extra sappige en malse structuur.
       </Text>
 
       <Image
-        source={require('./images/steakdeluxe.png')}
+        source={require('../images/KipSupreme.png')}
         style={styles.image}
       />
 
