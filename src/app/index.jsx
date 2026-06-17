@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, TextInput,
-} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, TouchableOpacity, TextInput,} from 'react-native';
 
 import Nav from './Newnav';
 import { router } from 'expo-router';
@@ -28,9 +27,6 @@ export default function App() {
     'Vanille-ijs',
   ];
 
-// filter() → loopt door alle gerechten
-// toLowerCase() → maakt alles klein (hoofdletter-ongevoelig zoeken)
-// includes() → kijkt of de tekst voorkomt in het gerecht
 
   const resultaten = gerechten.filter(item =>
     item.toLowerCase().includes(searchInput.toLowerCase())

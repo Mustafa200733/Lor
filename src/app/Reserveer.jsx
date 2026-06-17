@@ -16,20 +16,13 @@ export default function Reserveer() {
   const [showDatumOpties, setShowDatumOpties] = useState(false);
   const [showTijdOpties, setShowTijdOpties] = useState(false);
 
-// _ → wordt niet gebruikt (oude waarde)
-// i → de teller (0 t/m 13) index
-//  maak array met 14 opeenvolgende datums
+
 const datumOpties = Array.from({ length: 14 }, (_, i) => {
-
   const d = new Date();
-
-  // Haal het huidige dagnummer op (bijv. 16)
   const huidigeDag = d.getDate();
 
-  // Tel i dagen op bij de huidige dag 
   d.setDate(huidigeDag + i);
 
-  // Zet datum om naar Nederlands formaat (dd-mm-jjjj)
   return d.toLocaleDateString('nl-NL');
 });
 
@@ -46,34 +39,27 @@ const datumOpties = Array.from({ length: 14 }, (_, i) => {
     setTimeout(() => setShowMelding(false), 3000);
   };
 
-  // Naam filter (alleen letters)
   const veranderNaam = (tekst) => {
     setNaam(tekst.replace(/[^a-zA-Z\s]/g, ''));
   };
 
-  // Personen filter (alleen cijfers)
   const veranderPersonen = (tekst) => {
     setPersonen(tekst.replace(/[^0-9]/g, ''));
   };
 
-  // Reserveren
   const reserveer = () => {
-    // check lege velden
     if (!naam || !email || !datum || !tijd || !personen) {
       toonMelding('Vul alle velden in');
       return;
     }
 
-    // simpele email check
     if (!email.includes('@')) {
       toonMelding('Voer een geldig e-mailadres in');
       return;
     }
 
-    // succes
     toonMelding(`Reservering bevestigd voor ${naam} (${personen} personen)`);
 
-    // reset form
     setNaam('');
     setEmail('');
     setDatum('');
